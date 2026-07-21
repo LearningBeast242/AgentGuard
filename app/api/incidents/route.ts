@@ -14,6 +14,10 @@ import {
   requestLiveShellProposal,
 } from "../../../lib/live-defense.ts";
 import {
+  demoScenario,
+  isDemoScenarioId,
+} from "../../../lib/demo-repositories.ts";
+import {
   runtimeActorId,
   runtimeCredentials,
 } from "../agent-runtime/runtime-config.ts";
@@ -52,8 +56,17 @@ export async function POST(request: Request) {
   const body = payload && typeof payload === "object"
     ? payload as Record<string, unknown>
     : {};
-  const task = typeof body.task === "string" ? body.task.trim() : "";
-  const repository = Array.isArray(body.repository)
+  const requestedScenario =
+    typeof body.scenario === "string" ? body.scenario.trim() : "";
+  if (requestedScenario && !isDemoScenarioId(requestedScenario)) {
+    return NextResponse.json({ error: "Unknown live-defense scenario." }, { status: 400 });
+  }
+  const selectedScenario = requestedScenario
+    ? demoScenario(requestedScenario)
+    : null;
+  const task = selectedScenario?.task ??
+    (typeof body.task === "string" ? body.task.trim() : "");
+  const repository = selectedScenario?.repository ?? (Array.isArray(body.repository)
     ? body.repository.filter(
         (file): file is RepositoryFile =>
           Boolean(file) &&
@@ -61,7 +74,7 @@ export async function POST(request: Request) {
           typeof (file as Record<string, unknown>).path === "string" &&
           typeof (file as Record<string, unknown>).content === "string",
       )
-    : [];
+    : []);
   if (!task || task.length > 2_000 || !repository.length || repository.length > 12) {
     return NextResponse.json({ error: "A task and 1–12 repository files are required." }, { status: 400 });
   }

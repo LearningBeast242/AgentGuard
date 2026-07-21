@@ -1,0 +1,8 @@
+{
+  "name": "checkout-service-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/checkout.test.ts"
+  }
+}

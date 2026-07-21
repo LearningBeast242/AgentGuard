@@ -24,6 +24,12 @@ This is not universal operating-system interception. Agents must route tool
 intent through AgentGuard's gateway. See [ARCHITECTURE.md](./ARCHITECTURE.md)
 for the exact trust boundaries and invariants.
 
+The live attack uses the checked-in
+[`demo-codebases/checkout-service`](./demo-codebases/checkout-service) repository.
+Its real source files are imported into the server build and selected by a
+server-side scenario ID; the browser does not manufacture or submit the attack
+payload.
+
 ## Why it differs
 
 Guardrails stop actions and observability products store traces. AgentGuard
