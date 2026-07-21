@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1784550268506,
+      "tag": "0000_common_fabian_cortez",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1784566125856,
+      "tag": "0001_daily_zodiak",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1784596798021,
+      "tag": "0002_funny_sabretooth",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1784596977289,
+      "tag": "0003_worthless_sharon_carter",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1784597124263,
+      "tag": "0004_careful_dust",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1784605342595,
+      "tag": "0005_blushing_toro",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1784607027504,
+      "tag": "0006_luxuriant_gorgon",
+      "breakpoints": true
+    }
+  ]
+}
