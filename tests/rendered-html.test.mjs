@@ -21,6 +21,11 @@ test("build emits the Worker server and AgentGuard product surface", async () =>
   assert.match(app, /Agent security flight recorder/);
   assert.match(app, /Watch an agent get attacked\. Then make it remember/);
   assert.match(app, /Run live GPT-5\.6 attack/);
+  assert.match(app, /Sign in with ChatGPT to run live proof/);
+  assert.match(app, /No execution evidence yet/);
+  assert.match(app, /const latest = captured/);
+  assert.doesNotMatch(app, /const LIVE_DEFENSE_REPOSITORY/);
+  assert.doesNotMatch(app, /collector\.invalid … @\.env/);
   assert.match(app, /Live model evidence/);
   assert.match(app, /Replay on hardened-v2/);
   assert.match(app, /No synthetic telemetry/);
